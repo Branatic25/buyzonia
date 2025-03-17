@@ -538,7 +538,7 @@ export const products: Product[] = [
       "Storage": "64GB (expandable via microSD)",
       "Battery Life": "4.5-9 hours",
       "Connectivity": "Wi-Fi, Bluetooth 4.1, Wired LAN (dock)",
-      "Dimensions": "9.5" x 4" x 0.55" (with Joy-Con attached)",
+      "Dimensions": "9.5\" x 4\" x 0.55\" (with Joy-Con attached)",
       "Weight": "Approximately 0.93 lbs (with Joy-Con attached)"
     },
     price: 349.99,
