@@ -33,33 +33,33 @@ export function ProductCard({ product, featured = false }: ProductCardProps) {
     : 0;
 
   return (
-    <div className={`product-card ${featured ? 'h-full' : ''}`}>
+    <div className={`product-card group transition-all duration-300 hover:shadow-lg ${featured ? 'h-full' : ''}`}>
       <Link to={`/product/${product.slug}`} className="relative block overflow-hidden">
-        <div className="aspect-square overflow-hidden">
+        <div className="aspect-square overflow-hidden bg-gray-50">
           <img 
             src={product.image} 
             alt={product.name} 
-            className="product-image"
+            className="product-image transition-transform duration-500 group-hover:scale-110"
           />
         </div>
         
         {product.isNew && (
-          <Badge className="badge-new">New</Badge>
+          <Badge className="badge-new shadow-md">New</Badge>
         )}
 
         {discount > 0 && !product.isNew && (
-          <Badge className="badge-sale">{discount}% OFF</Badge>
+          <Badge className="badge-sale shadow-md">{discount}% OFF</Badge>
         )}
         
         {product.stock < 5 && product.stock > 0 && (
-          <Badge variant="outline" className="absolute left-2 top-2 bg-white/80 text-xs font-medium text-brand-dark">
+          <Badge variant="outline" className="absolute left-2 top-2 bg-white/90 shadow-sm text-xs font-medium text-brand-dark">
             Only {product.stock} left
           </Badge>
         )}
         
         {product.stock === 0 && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-            <Badge variant="outline" className="bg-white/90 px-3 py-1.5 text-sm font-bold text-brand-red">
+          <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-all">
+            <Badge variant="outline" className="bg-white/90 px-3 py-1.5 text-sm font-bold text-brand-red shadow-md">
               Out of Stock
             </Badge>
           </div>
@@ -69,13 +69,13 @@ export function ProductCard({ product, featured = false }: ProductCardProps) {
       {/* Product Info */}
       <div className="p-4">
         <div className="mb-1">
-          <Link to={`/category/${product.categoryId}`} className="text-xs font-medium text-muted-foreground hover:text-brand-blue">
+          <Link to={`/category/${product.categoryId}`} className="text-xs font-medium text-muted-foreground hover:text-brand-blue transition-colors">
             {product.category}
           </Link>
         </div>
         
-        <Link to={`/product/${product.slug}`} className="group">
-          <h3 className="mb-1 text-base font-medium line-clamp-2 group-hover:text-brand-blue">
+        <Link to={`/product/${product.slug}`} className="group/title">
+          <h3 className="mb-1 text-base font-medium line-clamp-2 group-hover/title:text-brand-blue transition-colors">
             {product.name}
           </h3>
         </Link>
@@ -104,7 +104,7 @@ export function ProductCard({ product, featured = false }: ProductCardProps) {
           )}
           <span className="price-current">${product.price.toFixed(2)}</span>
           {discount > 0 && (
-            <span className="price-discount">Save {discount}%</span>
+            <span className="price-discount font-semibold">Save {discount}%</span>
           )}
         </div>
         
@@ -112,14 +112,14 @@ export function ProductCard({ product, featured = false }: ProductCardProps) {
           <Button 
             variant="outline" 
             size="icon" 
-            className="h-9 w-9 rounded-md flex-shrink-0"
+            className="h-9 w-9 rounded-md flex-shrink-0 transition-transform duration-200 hover:scale-105"
             aria-label="Add to Wishlist"
           >
             <Heart size={18} className="text-muted-foreground" />
           </Button>
           
           <Button 
-            className="h-9 w-full rounded-md bg-brand-blue text-white hover:bg-brand-blue/90 flex-1"
+            className="h-9 w-full rounded-md bg-gradient-to-r from-brand-blue to-blue-600 text-white hover:from-brand-blue/90 hover:to-blue-600/90 shadow-sm transition-all duration-200 hover:shadow-md flex-1"
             onClick={handleAddToCart}
             disabled={isLoading || product.stock === 0}
           >

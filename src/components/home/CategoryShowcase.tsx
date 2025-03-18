@@ -47,12 +47,15 @@ export function CategoryShowcase() {
   };
 
   return (
-    <div className="py-12 md:py-16">
+    <div className="py-16 md:py-20 bg-gradient-to-b from-background to-muted/50">
       <div className="container">
-        <div className="mb-8 text-center md:mb-12">
+        <div className="mb-10 text-center md:mb-12">
+          <div className="mx-auto mb-3 w-fit rounded-full bg-brand-blue/10 px-4 py-1 text-sm font-medium text-brand-blue">
+            Explore Categories
+          </div>
           <h2 className="mb-2 text-2xl font-bold md:text-3xl">Shop by Category</h2>
-          <p className="text-muted-foreground">
-            Browse our extensive collection of top-quality electronics
+          <p className="mx-auto max-w-2xl text-muted-foreground">
+            Browse our extensive collection of top-quality electronics, carefully curated for tech enthusiasts
           </p>
         </div>
         
@@ -61,16 +64,17 @@ export function CategoryShowcase() {
             <Link
               key={category.id}
               to={`/category/${category.slug}`}
-              className="group flex flex-col items-center rounded-lg border bg-card p-4 shadow-sm transition-all hover:border-brand-blue hover:shadow-md"
+              className="group flex flex-col items-center rounded-xl border bg-card p-4 shadow-sm transition-all duration-300 hover:border-brand-blue hover:shadow-md hover:translate-y-[-4px]"
             >
-              <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue transition-all duration-200 group-hover:bg-brand-blue group-hover:text-white">
+              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-brand-blue/10 to-brand-blue/20 text-brand-blue transition-all duration-300 group-hover:bg-brand-blue group-hover:text-white">
                 {categoryIcons[category.slug] || (
                   <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                   </svg>
                 )}
               </div>
-              <h3 className="text-center font-medium">{category.name}</h3>
+              <h3 className="text-center font-medium group-hover:text-brand-blue transition-colors">{category.name}</h3>
+              <span className="mt-1 text-xs text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100">Shop now →</span>
             </Link>
           ))}
         </div>

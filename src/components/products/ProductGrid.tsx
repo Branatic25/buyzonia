@@ -26,17 +26,26 @@ export function ProductGrid({
   };
 
   return (
-    <div>
+    <div className="animate-fade-in">
       {(title || subtitle) && (
-        <div className="mb-6 text-center md:mb-8">
-          {title && <h2 className="text-2xl font-bold md:text-3xl">{title}</h2>}
-          {subtitle && <p className="mt-2 text-muted-foreground">{subtitle}</p>}
+        <div className="mb-8 text-center md:mb-10">
+          {title && (
+            <>
+              <div className="mx-auto mb-3 w-fit rounded-full bg-brand-blue/10 px-4 py-1 text-sm font-medium text-brand-blue">
+                Featured Selection
+              </div>
+              <h2 className="text-2xl font-bold md:text-3xl">{title}</h2>
+            </>
+          )}
+          {subtitle && <p className="mt-2 mx-auto max-w-2xl text-muted-foreground">{subtitle}</p>}
         </div>
       )}
       
-      <div className={`grid grid-cols-1 gap-4 md:gap-6 ${getColumnClass()}`}>
+      <div className={`grid grid-cols-1 gap-6 md:gap-6 ${getColumnClass()}`}>
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <div key={product.id} className="transform transition-transform duration-300 hover:-translate-y-1">
+            <ProductCard product={product} />
+          </div>
         ))}
       </div>
     </div>
